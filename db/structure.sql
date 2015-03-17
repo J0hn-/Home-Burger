@@ -1,3 +1,14 @@
+/*
+CREER LA DATABASE :
+
+
+create database if not exists hombeburger character set utf8 collate utf8_unicode_ci;
+use hombeburger;
+
+grant all privileges on hombeburger.* to 'hombeburger_user'@'localhost' identified by 'secret';
+
+*/
+
 drop table if exists t_usr;
 drop table if exists t_cat;
 drop table if exists t_brg;
