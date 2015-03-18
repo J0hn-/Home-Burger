@@ -11,11 +11,11 @@
     </header>
     <?php foreach ($burgers as $burger): ?>
     <article>
-        <h2><?php echo $burger['brg_name'] ?></h2>
-        <p><?php echo $burger['brg_resume'] ?></p>
+        <h2><?php echo $burger->getName() ?></h2>
+        <p><?php echo $burger->getResume() ?></p>
     </article>
     <?php endforeach ?>
     <footer class="footer">
-        <a href="https://github.com/bpesquet/OC-MicroCMS">HomeBurger</a> is a minimalistic CMS built as a showcase for modern PHP development.
+        <a href="https://www.google.fr/#q=homeburger">HomeBurger</a> is a fucking great idea !
     </footer>
 </body>
