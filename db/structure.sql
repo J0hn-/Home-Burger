@@ -1,9 +1,9 @@
 /* CREER LA DATABASE : */
+drop database if exists homeburger;
+create database if not exists homeburger character set utf8 collate utf8_unicode_ci;
+use homeburger;
 
-create database if not exists hombeburger character set utf8 collate utf8_unicode_ci;
-use hombeburger;
-
-grant all privileges on hombeburger.* to 'hombeburger_user'@'localhost' identified by 'secret';
+grant all privileges on homeburger.* to 'homeburger_user'@'localhost' identified by 'secret';
 
 /* CREER LA STRUCTURE : */
 
@@ -34,7 +34,7 @@ create table t_brg_cat (
 create table t_ing (
 	ing_id integer not null,
 	ing_name varchar(50)
-);
+)engine=innodb character set utf8 collate utf8_unicode_ci;
 
 create table t_brg_ing (
 	brg_id integer not null,

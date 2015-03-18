@@ -1,4 +1,4 @@
-use hombeburger;
+use homeburger;
 
 truncate table t_usr;
 truncate table t_cat;
