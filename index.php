@@ -11,7 +11,7 @@
     </header>
     <?php
     $bdd = new PDO('mysql:host=localhost;dbname=homeburger;charset=utf8', 'homeburger_user', 'secret');
-    $burger = $bdd->query('select * from t_brg order by art_id desc');
+    $burgers = $bdd->query('select * from t_brg order by brg_id desc');
     foreach ($burgers as $burger): ?>
     <article>
         <h2><?php echo $burger['brg_name'] ?></h2>
