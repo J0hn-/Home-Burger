@@ -12,5 +12,6 @@ $app->register(new Silex\Provider\DoctrineServiceProvider());
 
 // Register services.
 $app['dao.burger'] = $app->share(function ($app) {
+<<<<<<< HEAD
     return new HomeBurger\DAO\BurgerDAO($app['db']);
 });
