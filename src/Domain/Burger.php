@@ -2,31 +2,31 @@
 
 namespace HomeBurger\Domain;
 
-class Article 
+class Burger
 {
     /**
-     * Article id.
+     * Burger id.
      *
      * @var integer
      */
     private $id;
 
     /**
-     * Article name.
+     * Burger name.
      *
      * @var string
      */
     private $name;
 
     /**
-     * Article resume.
+     * Burger resume.
      *
      * @var string
      */
     private $resume;
-	
+
 	/**
-     * Article IMGpath.
+     * Burger IMGpath.
      *
      * @var string
      */
@@ -55,11 +55,11 @@ class Article
     public function setResume($resume) {
         $this->resume = $resume;
     }
-	
+
 	public function getIMGpath() {
         return $this->IMGpath;
     }
-	
+
 	public function setIMGpath($IMGpath) {
         $this->IMGpath = $IMGpath;
     }

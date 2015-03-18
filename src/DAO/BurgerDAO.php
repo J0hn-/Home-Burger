@@ -45,7 +45,7 @@ class BurgerDAO
      * Creates an Burger object based on a DB row.
      *
      * @param array $row The DB row containing Burger data.
-     * @return \MicroCMS\Domain\Burger
+     * @return \HomeBurger\Domain\Burger
      */
     private function buildBurger(array $row) {
         $burger = new Burger();
