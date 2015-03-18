@@ -1,13 +1,11 @@
-/*
-CREER LA DATABASE :
-
+/* CREER LA DATABASE : */
 
 create database if not exists hombeburger character set utf8 collate utf8_unicode_ci;
 use hombeburger;
 
 grant all privileges on hombeburger.* to 'hombeburger_user'@'localhost' identified by 'secret';
 
-*/
+/* CREER LA STRUCTURE : */
 
 drop table if exists t_usr;
 drop table if exists t_cat;
@@ -16,17 +14,16 @@ drop table if exists t_brg_cat;
 drop table if exists t_ing;
 drop table if exists t_brg_ing;
 
-create table t_bur (
+create table t_brg (
     brg_id integer not null primary key,
     brg_name varchar(50) not null,
     brg_resume varchar(2000) not null,
-	constraint fk_cat foreign key(brg_cat) references t_categorie(cat_id),
 	brg_img_path varchar(50) not null
 ) engine=innodb character set utf8 collate utf8_unicode_ci;
 
 create table t_cat (
     cat_id integer not null primary key,
-    cat_name varchar(50) not null,
+    cat_name varchar(50) not null
 ) engine=innodb character set utf8 collate utf8_unicode_ci;
 
 create table t_brg_cat (

@@ -1,3 +1,12 @@
+use hombeburger;
+
+truncate table t_usr;
+truncate table t_cat;
+truncate table t_brg;
+truncate table t_brg_cat;
+truncate table t_ing;
+truncate table t_brg_ing;
+
 insert into t_cat values
 (1, 'Classiques');
 insert into t_cat values
@@ -15,19 +24,19 @@ insert into t_cat values
 
 
 insert into t_brg values
-(1, 'Cheeseburger', "L'incontournable cheeseburger !");
+(1, 'Cheeseburger', "L'incontournable cheeseburger !","");
 insert into t_brg values
-(2, 'Hamburger', "Rien de plus standart !");
+(2, 'Hamburger', "Rien de plus standart !","");
 insert into t_brg values
-(3, 'Eggburger', "Pour vous les végétariens !");
+(3, 'Eggburger', "Pour vous les végétariens !","");
 insert into t_brg values
-(4, 'Vegetoburger', "Pour les plus stricts végétaliens !");
+(4, 'Vegetoburger', "Pour les plus stricts végétaliens !","");
 insert into t_brg values
-(5, 'Burnburger', "Appelez les pompiers !");
+(5, 'Burnburger', "Appelez les pompiers !","");
 insert into t_brg values
-(6, 'Chickenburger', "Cot cot cot !");
+(6, 'Chickenburger', "Cot cot cot !","");
 insert into t_brg values
-(7, 'Fishburger', "Magicarp ! Magicarp !");
+(7, 'Fishburger', "Magicarp ! Magicarp !","");
 
 
 insert into t_brg_cat values (1, 1);
@@ -78,13 +87,13 @@ insert into t_brg_ing values (7, 6);
 
 
 /* raw password is 'john' */
-insert into t_user values
+insert into t_usr values
 (1, 'JohnDoe', 'L2nNR5hIcinaJkKR+j4baYaZjcHS0c3WX2gjYF6Tmgl1Bs+C9Qbr+69X8eQwXDvw0vp73PrcSeT0bGEW5+T2hA==', 'YcM=A$nsYzkyeDVjEUa7W9K', 'ROLE_USER');
 /* raw password is 'jane' */
-insert into t_user values
+insert into t_usr values
 (2, 'JaneDoe', 'EfakNLxyhHy2hVJlxDmVNl1pmgjUZl99gtQ+V3mxSeD8IjeZJ8abnFIpw9QNahwAlEaXBiQUBLXKWRzOmSr8HQ==', 'dhMTBkzwDKxnD;4KNs,4ENy', 'ROLE_USER');
 /* raw password is '@dm1n' */
-insert into t_user values
+insert into t_usr values
 (3, 'admin', 'gqeuP4YJ8hU3ZqGwGikB6+rcZBqefVy+7hTLQkOD+jwVkp4fkS7/gr1rAQfn9VUKWc7bvOD7OsXrQQN5KGHbfg==', 'EDDsl&fBCJB|a5XUtAlnQN8', 'ROLE_ADMIN');
 
 
