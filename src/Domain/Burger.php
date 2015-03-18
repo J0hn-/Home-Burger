@@ -2,11 +2,8 @@
 
 namespace Home-Burger\Domain;
 
-<<<<<<< HEAD
 class Burger 
-=======
-class Burger
->>>>>>> origin/master
+
 {
     /**
      * Burger id.
