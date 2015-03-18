@@ -1,9 +1,9 @@
 <?php
 
-namespace HomeBurger\DAO;
+namespace Home-Burger\DAO;
 
 use Doctrine\DBAL\Connection;
-use HomeBurger\Domain\Burger;
+use Home-Burger\Domain\Burger;
 
 class BurgerDAO
 {

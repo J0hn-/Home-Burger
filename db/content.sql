@@ -24,19 +24,19 @@ insert into t_cat values
 
 
 insert into t_brg values
-(1, 'Cheeseburger', "L'incontournable cheeseburger !","");
+(1, 'Cheeseburger', "L'incontournable cheeseburger !","images/img1.jpg");
 insert into t_brg values
-(2, 'Hamburger', "Rien de plus standart !","");
+(2, 'Hamburger', "Rien de plus standart !","images/img1.jpg");
 insert into t_brg values
-(3, 'Eggburger', "Pour vous les végétariens !","");
+(3, 'Eggburger', "Pour vous les végétariens !","images/img1.jpg");
 insert into t_brg values
-(4, 'Vegetoburger', "Pour les plus stricts végétaliens !","");
+(4, 'Vegetoburger', "Pour les plus stricts végétaliens !","images/img1.jpg");
 insert into t_brg values
-(5, 'Burnburger', "Appelez les pompiers !","");
+(5, 'Burnburger', "Appelez les pompiers !","images/img1.jpg");
 insert into t_brg values
-(6, 'Chickenburger', "Cot cot cot !","");
+(6, 'Chickenburger', "Cot cot cot !","images/img1.jpg");
 insert into t_brg values
-(7, 'Fishburger', "Magicarp ! Magicarp !","");
+(7, 'Fishburger', "Magicarp ! Magicarp !","images/img1.jpg");
 
 
 insert into t_brg_cat values (1, 1);

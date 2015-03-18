@@ -10,10 +10,11 @@
         <h1>Home Burger</h1>
     </header>
     <?php foreach ($burgers as $burger): ?>
-    <article>
+    <burger>
         <h2><?php echo $burger->getName() ?></h2>
         <p><?php echo $burger->getResume() ?></p>
-    </article>
+		<img src = '<?php echo $burger->getIMGpath(); ?>'/>
+    </burger>
     <?php endforeach ?>
     <footer class="footer">
         <a href="https://www.google.fr/#q=homeburger">HomeBurger</a> is a fucking great idea !

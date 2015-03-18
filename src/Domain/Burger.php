@@ -1,32 +1,32 @@
 <?php
 
-namespace HomeBurger\Domain;
+namespace Home-Burger\Domain;
 
-class Article 
+class Burger 
 {
     /**
-     * Article id.
+     * Burger id.
      *
      * @var integer
      */
     private $id;
 
     /**
-     * Article name.
+     * Burger name.
      *
      * @var string
      */
     private $name;
 
     /**
-     * Article resume.
+     * Burger resume.
      *
      * @var string
      */
     private $resume;
 	
 	/**
-     * Article IMGpath.
+     * Burger IMGpath.
      *
      * @var string
      */
