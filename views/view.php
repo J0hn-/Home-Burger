@@ -17,6 +17,6 @@
     </burger>
     <?php endforeach ?>
     <footer class="footer">
-        <a href="https://www.google.fr/#q=homeburger">HomeBurger</a> is a fucking great idea !
+        <a href="https://www.google.fr/#q=homeburger">HomeBurger</a> is a fucking great idea ! Oh yeah like that !
     </footer>
 </body>

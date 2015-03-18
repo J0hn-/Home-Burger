@@ -31,7 +31,7 @@ class BurgerDAO
     public function findAll() {
         $sql = "select * from t_brg order by brg_id asc";
         $result = $this->db->fetchAll($sql);
-        
+
         // Convert query result to an array of domain objects
         $burgers = array();
         foreach ($result as $row) {
@@ -45,14 +45,14 @@ class BurgerDAO
      * Creates an Burger object based on a DB row.
      *
      * @param array $row The DB row containing Burger data.
-     * @return \MicroCMS\Domain\Burger
+     * @return \HomeBurger\Domain\Burger
      */
     private function buildBurger(array $row) {
         $burger = new Burger();
         $burger->setId($row['brg_id']);
         $burger->setName($row['brg_name']);
         $burger->setContent($row['brg_resume']);
-		$burger->setIMGpath($row['brg_img_path']);
+		    $burger->setIMGpath($row['brg_img_path']);
         return $burger;
     }
 }

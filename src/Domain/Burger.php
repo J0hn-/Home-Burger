@@ -2,7 +2,11 @@
 
 namespace Home-Burger\Domain;
 
+<<<<<<< HEAD
 class Burger 
+=======
+class Burger
+>>>>>>> origin/master
 {
     /**
      * Burger id.
@@ -24,7 +28,7 @@ class Burger
      * @var string
      */
     private $resume;
-	
+
 	/**
      * Burger IMGpath.
      *
@@ -55,11 +59,11 @@ class Burger
     public function setResume($resume) {
         $this->resume = $resume;
     }
-	
+
 	public function getIMGpath() {
         return $this->IMGpath;
     }
-	
+
 	public function setIMGpath($IMGpath) {
         $this->IMGpath = $IMGpath;
     }
