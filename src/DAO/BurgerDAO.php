@@ -53,6 +53,8 @@ class BurgerDAO extends DAO
         $burger->setName($row['brg_name']);
         $burger->setResume($row['brg_resume']);
 		    $burger->setIMGname($row['brg_img_name']);
+        $burger->setCategory($row['brg_cat']);
+        $burger->setPrice($row['brg_prix']);
         return $burger;
     }
 }

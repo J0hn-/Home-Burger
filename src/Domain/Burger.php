@@ -57,11 +57,27 @@ class Burger
         $this->resume = $resume;
     }
 
-	public function getIMGname() {
+  	public function getIMGname() {
         return $this->IMGname;
     }
 
-	public function setIMGname($IMGname) {
+  	public function setIMGname($IMGname) {
         $this->IMGname = $IMGname;
+    }
+
+    public function getCategory() {
+        return $this->category;
+    }
+
+  	public function setCategory($category) {
+        $this->category = $category;
+    }
+
+    public function getPrice() {
+        return $this->price;
+    }
+
+  	public function setPrice($price) {
+        $this->price = $price;
     }
 }

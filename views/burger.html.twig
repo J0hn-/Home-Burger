@@ -10,11 +10,9 @@
         </div>
         <div class="col-md-7 col-sm-5">
             <h2>{{ burger.name }}
-                <!--
-                <br><small>U2 (1991)</small>
-                <br><small><a href="/genre/1">Pop/Rock</a></small>
-                <br><small>9.90 euros</small>
-                -->
+                <br><small>{{ burger.resume }}</small>
+                <br><small><a href="/cat/{{ burger.category }}">Catégorie</a></small>
+                <br><small>{{ burger.price }} euros</small>
             </h2>
             <a href="/card/add/{{ burger.id }}" class="btn btn-primary" id="">
                 <span class="glyphicon glyphicon-shopping-cart"></span> Ajouter au panier
