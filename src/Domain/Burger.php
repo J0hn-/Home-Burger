@@ -2,7 +2,7 @@
 
 namespace HomeBurger\Domain;
 
-class Burger 
+class Burger
 
 {
     /**
@@ -27,11 +27,11 @@ class Burger
     private $resume;
 
 	/**
-     * Burger IMGpath.
+     * Burger IMGname.
      *
      * @var string
      */
-    private $IMGpath;
+    private $IMGname;
 
     public function getId() {
         return $this->id;
@@ -57,11 +57,11 @@ class Burger
         $this->resume = $resume;
     }
 
-	public function getIMGpath() {
-        return $this->IMGpath;
+	public function getIMGname() {
+        return $this->IMGname;
     }
 
-	public function setIMGpath($IMGpath) {
-        $this->IMGpath = $IMGpath;
+	public function setIMGname($IMGname) {
+        $this->IMGname = $IMGname;
     }
 }
