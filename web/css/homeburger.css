@@ -1,4 +1,4 @@
-body { 
+body {
     padding-top: 40px;
 }
 
@@ -8,7 +8,7 @@ body {
     text-align: center;
 }
 
-.articleTitle:hover, .articleTitle:focus {
+.burgerTitle:hover, .burgerTitle:focus {
     text-decoration: none;
 }
 

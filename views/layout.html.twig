@@ -1,0 +1,73 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="{{ app.request.basepath }}/lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="{{ app.request.basepath }}/css/homeburger.css" rel="stylesheet" />
+    <title>Home Burger - {% block title %}{% endblock %}</title>
+</head>
+<body>
+  <div class="container">
+    <nav class="navbar navbar-default navbar-fixed-top navbar-inverse" role="navigation">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse-target">
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+                </button>
+              <a class="navbar-brand" href="/"><span class="glyphicon glyphicons-menu-hamburger"></span> Home-Burger</a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar-collapse-target">
+              <ul class="nav navbar-nav">
+                <li class="dropdown">
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown">Catégories <b class="caret"></b></a>
+                  <ul class="dropdown-menu">
+                    <li><a href="/cat/1">Classique</a></li>
+                    <li><a href="/cat/2">Epicé</a></li>
+                    <li><a href="/cat/3">Végétarien</a></li>
+                    <li><a href="/cat/4">Végétalien</a></li>
+                    <li><a href="/cat/5">Boeuf</a></li>
+                    <li><a href="/cat/6">Poulet</a></li>
+                    <li><a href="/cat/7">Poisson</a></li>
+                    <li><a href="/cat/8">Exotique</a></li>
+                  </ul>
+                </li>
+              </ul>
+              <ul class="nav navbar-nav">
+                <li class="dropdown">
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown">Ingrédients <b class="caret"></b></a>
+                  <ul class="dropdown-menu">
+                    <li><a href="/ing/1">Cornichons</a></li>
+                    <li><a href="/ing/2">Salade, Tomates, Oignons</a></li>
+                    <li><a href="/ing/3">Fromage</a></li>
+                    <li><a href="/ing/4">Steak</a></li>
+                    <li><a href="/ing/5">Poulet</a></li>
+                    <li><a href="/ing/6">Poisson</a></li>
+                    <li><a href="/ing/7">Oeuf</a></li>
+                    <li><a href="/ing/8">Steak Végétarien</a></li>
+                    <li><a href="/ing/9">Piment</a></li>
+                  </ul>
+                </li>
+              </ul>
+              <ul class="nav navbar-nav navbar-right">
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                        <span class="glyphicon glyphicon-user"></span> Non connecté <b class="caret"></b>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a href="/login">S'identifier</a></li>
+                    </ul>
+                </li>
+              </ul>
+            </div>
+        </div><!-- /.container -->
+    </nav>
+    <div id="content">{% block content %}{% endblock %}</div>
+    <footer class="footer">
+        <a href="https://www.google.fr/#q=homeburger">HomeBurger</a> is a fucking great idea ! Oh yeah !
+    </footer>
+</body>
+</html>

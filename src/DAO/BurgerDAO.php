@@ -2,43 +2,43 @@
 
 namespace HomeBurger\DAO;
 
-use Doctrine\DBAL\Connection;
 use HomeBurger\Domain\Burger;
 
-class BurgerDAO
+class BurgerDAO extends DAO
 {
     /**
-     * Database connection
-     *
-     * @var \Doctrine\DBAL\Connection
-     */
-    private $db;
-
-    /**
-     * Constructor
-     *
-     * @param \Doctrine\DBAL\Connection The database connection object
-     */
-    public function __construct(Connection $db) {
-        $this->db = $db;
-    }
-
-    /**
-     * Return a list of all burgerss, sorted by ID, in ascending order.
+     * Return a list of all burgers, sorted by ID, in ascending order.
      *
      * @return array A list of all burgers.
      */
     public function findAll() {
         $sql = "select * from t_brg order by brg_id asc";
-        $result = $this->db->fetchAll($sql);
+        $result = $this->getDb()->fetchAll($sql);
 
         // Convert query result to an array of domain objects
         $burgers = array();
         foreach ($result as $row) {
             $burgerId = $row['brg_id'];
-            $burgers[$burgerId] = $this->buildBurger($row);
+            $burgers[$burgerId] = $this->buildDomainObject($row);
         }
         return $burgers;
+    }
+
+    /**
+     * Returns an article matching the supplied id.
+     *
+     * @param integer $id
+     *
+     * @return \HomeBurger\Domain\Burger|throws an exception if no matching article is found
+     */
+    public function find($id) {
+        $sql = "select * from t_brg where brg_id=?";
+        $row = $this->getDb()->fetchAssoc($sql, array($id));
+
+        if ($row)
+            return $this->buildDomainObject($row);
+        else
+            throw new \Exception("No burger matching id " . $id);
     }
 
     /**
@@ -47,12 +47,12 @@ class BurgerDAO
      * @param array $row The DB row containing Burger data.
      * @return \HomeBurger\Domain\Burger
      */
-    private function buildBurger(array $row) {
+    protected function buildDomainObject($row) {
         $burger = new Burger();
         $burger->setId($row['brg_id']);
         $burger->setName($row['brg_name']);
         $burger->setResume($row['brg_resume']);
-		$burger->setIMGpath($row['brg_img_path']);
+		    $burger->setIMGname($row['brg_img_name']);
         return $burger;
     }
 }

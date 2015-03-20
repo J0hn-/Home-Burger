@@ -1,0 +1,25 @@
+{% extends "layout.html.twig" %}
+
+{% block title %}{{ burger.name }}{% endblock %}
+
+{% block content %}
+<div class="jumbotron">
+    <div class="row">
+        <div class="col-md-5 col-sm-7">
+            <img class="img-responsive" id="imgBurger" src="{{ app.request.basepath }}/images/{{ burger.IMGname }}" title="{{ burger.name }}" />
+        </div>
+        <div class="col-md-7 col-sm-5">
+            <h2>{{ burger.name }}
+                <!--
+                <br><small>U2 (1991)</small>
+                <br><small><a href="/genre/1">Pop/Rock</a></small>
+                <br><small>9.90 euros</small>
+                -->
+            </h2>
+            <a href="/card/add/{{ burger.id }}" class="btn btn-primary" id="">
+                <span class="glyphicon glyphicon-shopping-cart"></span> Ajouter au panier
+            </a>
+        </div>
+    </div>
+</div>
+{% endblock %}
