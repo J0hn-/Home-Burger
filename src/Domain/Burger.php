@@ -1,6 +1,6 @@
 <?php
 
-namespace Home-Burger\Domain;
+namespace HomeBurger\Domain;
 
 class Burger 
 

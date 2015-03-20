@@ -4,6 +4,6 @@
         "doctrine/dbal": "~2.4"
     },
     "autoload": {
-        "psr-4": {"MicroCMS\\": "src"}
+        "psr-4": {"HomeBurger\\": "src"}
     }
 }

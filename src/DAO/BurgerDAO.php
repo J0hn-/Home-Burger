@@ -1,9 +1,9 @@
 <?php
 
-namespace Home-Burger\DAO;
+namespace HomeBurger\DAO;
 
 use Doctrine\DBAL\Connection;
-use Home-Burger\Domain\Burger;
+use HomeBurger\Domain\Burger;
 
 class BurgerDAO
 {
@@ -51,7 +51,7 @@ class BurgerDAO
         $burger = new Burger();
         $burger->setId($row['brg_id']);
         $burger->setName($row['brg_name']);
-        $burger->setContent($row['brg_resume']);
+        $burger->setResume($row['brg_resume']);
 		$burger->setIMGpath($row['brg_img_path']);
         return $burger;
     }
