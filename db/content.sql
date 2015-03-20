@@ -8,7 +8,7 @@ truncate table t_ing;
 truncate table t_brg_ing;
 
 insert into t_cat values
-(1, 'Classiques');
+(1, 'Classique');
 insert into t_cat values
 (2, 'Épicé');
 insert into t_cat values
@@ -21,6 +21,8 @@ insert into t_cat values
 (6, 'Poulet');
 insert into t_cat values
 (7, 'Poisson');
+insert into t_cat values
+(7, 'Exotique');
 
 
 insert into t_brg values
@@ -103,4 +105,3 @@ insert into t_comment values
 insert into t_comment values
 (2, "Thank you, I'll try my best.", 1, 2);
 */
-
