@@ -22,7 +22,7 @@ insert into t_cat values
 insert into t_cat values
 (7, 'Poisson');
 insert into t_cat values
-(7, 'Exotique');
+(8, 'Exotique');
 
 
 insert into t_brg values
