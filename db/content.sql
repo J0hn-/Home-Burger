@@ -1,12 +1,5 @@
 use homeburger;
 
-truncate table t_usr;
-truncate table t_cat;
-truncate table t_brg;
-truncate table t_brg_cat;
-truncate table t_ing;
-truncate table t_brg_ing;
-
 insert into t_cat values
 (1, 'Classique');
 insert into t_cat values
@@ -26,32 +19,19 @@ insert into t_cat values
 
 
 insert into t_brg values
-(1, 'Cheeseburger', "L'incontournable cheeseburger !","images/img1.jpg");
+(1, 'Cheeseburger', "L'incontournable cheeseburger !","img1.jpg",1,9.99);
 insert into t_brg values
-(2, 'Hamburger', "Rien de plus standart !","images/img1.jpg");
+(2, 'Hamburger', "Rien de plus standart !","img1.jpg",1,9.99);
 insert into t_brg values
-(3, 'Eggburger', "Pour vous les végétariens !","images/img1.jpg");
+(3, 'Eggburger', "Pour vous les végétariens !","img1.jpg",3,9.99);
 insert into t_brg values
-(4, 'Vegetoburger', "Pour les plus stricts végétaliens !","images/img1.jpg");
+(4, 'Vegetoburger', "Pour les plus stricts végétaliens !","img1.jpg",4,9.99);
 insert into t_brg values
-(5, 'Burnburger', "Appelez les pompiers !","images/img1.jpg");
+(5, 'Burnburger', "Appelez les pompiers !","img1.jpg",2,9.99);
 insert into t_brg values
-(6, 'Chickenburger', "Cot cot cot !","images/img1.jpg");
+(6, 'Chickenburger', "Cot cot cot !","img1.jpg",6,9.99);
 insert into t_brg values
-(7, 'Fishburger', "Magicarp ! Magicarp !","images/img1.jpg");
-
-
-insert into t_brg_cat values (1, 1);
-insert into t_brg_cat values (1, 5);
-insert into t_brg_cat values (2, 1);
-insert into t_brg_cat values (2, 5);
-insert into t_brg_cat values (3, 3);
-insert into t_brg_cat values (4, 4);
-insert into t_brg_cat values (5, 2);
-insert into t_brg_cat values (5, 5);
-insert into t_brg_cat values (6, 6);
-insert into t_brg_cat values (6, 2);
-insert into t_brg_cat values (7, 7);
+(7, 'Fishburger', "Magicarp ! Magicarp !","img1.jpg",7,9.99);
 
 
 insert into t_ing values (1, 'Cornichons');
