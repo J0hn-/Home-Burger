@@ -14,9 +14,13 @@
                 <br><small><a href="/cat/{{ burger.category }}">Catégorie</a></small>
                 <br><small>{{ burger.price }} euros</small>
             </h2>
-            <a href="/card/add/{{ burger.id }}" class="btn btn-primary" id="">
-                <span class="glyphicon glyphicon-shopping-cart"></span> Ajouter au panier
-            </a>
+            {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+                <a href="/card/add/{{ burger.id }}" class="btn btn-primary" id="">
+                    <span class="glyphicon glyphicon-shopping-cart"></span> Ajouter au panier
+                </a>
+            {% else %}
+                <a href="{{ path('login') }} ">Log in</a> to add burgers to cart.
+            {% endif %}
         </div>
     </div>
 </div>
