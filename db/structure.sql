@@ -16,8 +16,7 @@ drop table if exists t_brg_ing;
 
 create table t_cat (
   cat_id integer not null primary key,
-  cat_name varchar(50) not null,
-  constraint fk_cat_id foreign key(cat_id) references t_cat(cat_id)
+  cat_name varchar(50) not null
 ) engine=innodb character set utf8 collate utf8_unicode_ci;
 
 create table t_brg (
@@ -26,8 +25,9 @@ create table t_brg (
   brg_resume varchar(2000) not null,
   brg_img_name varchar(50) not null,
   brg_cat integer not null,
+  brg_prix float(5) not null,
   constraint fk_cat_brg foreign key(brg_cat) references t_cat(cat_id),
-  brg_prix float(5) not null
+  constraint fk_cat_id foreign key(brg_cat) references t_cat(cat_id)
 ) engine=innodb character set utf8 collate utf8_unicode_ci;
 
 create table t_ing (
