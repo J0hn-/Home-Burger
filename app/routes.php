@@ -31,8 +31,9 @@ $app->get('/burger/{id}', function ($id) use ($app) {
 
 // Login form
 $app->get('/login', function(Request $request) use ($app) {
+    $categories = $app['dao.category']->findAll();
     return $app['twig']->render('login.html.twig', array(
+        'categories'    => $categories,
         'error'         => $app['security.last_error']($request),
-        'last_username' => $app['session']->get('_security.last_username'),
-    ));
+        'last_username' => $app['session']->get('_security.last_username')));
 })->bind('login');  // named route so that path('login') works in Twig templates

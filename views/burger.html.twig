@@ -15,7 +15,7 @@
                 <br><small>{{ burger.price }} euros</small>
             </h2>
             {% if is_granted('IS_AUTHENTICATED_FULLY') %}
-                <a href="/card/add/{{ burger.id }}" class="btn btn-primary" id="">
+                <a href="/cart/add/{{ burger.id }}" class="btn btn-primary" id="">
                     <span class="glyphicon glyphicon-shopping-cart"></span> Ajouter au panier
                 </a>
             {% else %}

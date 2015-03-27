@@ -32,8 +32,11 @@ $app->register(new Silex\Provider\SecurityServiceProvider(), array(
 $app['dao.burger'] = $app->share(function ($app) {
     return new HomeBurger\DAO\BurgerDAO($app['db']);
 });
+
 $app['dao.category'] = $app->share(function ($app) {
     return new HomeBurger\DAO\CategoryDAO($app['db']);
+});
+
 $app['dao.user'] = $app->share(function ($app) {
     return new HomeBurger\DAO\UserDAO($app['db']);
 });
