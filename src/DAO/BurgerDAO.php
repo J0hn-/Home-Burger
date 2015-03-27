@@ -25,7 +25,7 @@ class BurgerDAO extends DAO
     }
 
     /**
-     * Returns an article matching the supplied id.
+     * Returns a burger matching the supplied id.
      *
      * @param integer $id
      *
@@ -39,6 +39,26 @@ class BurgerDAO extends DAO
             return $this->buildDomainObject($row);
         else
             throw new \Exception("No burger matching id " . $id);
+    }
+
+    /**
+     * Return a list of all burgers, sorted by ID, in ascending order, matching the supplied category id.
+     *
+     * @param integer $id
+     *
+     * @return array A list of all burgers.
+     */
+    public function findByCategory($id) {
+        $sql = "select * from t_brg where brg_cat=? order by brg_id asc";
+        $result = $this->getDb()->fetchAll($sql, array($id));
+
+        // Convert query result to an array of domain objects
+        $burgers = array();
+        foreach ($result as $row) {
+            $burgerId = $row['brg_id'];
+            $burgers[$burgerId] = $this->buildDomainObject($row);
+        }
+        return $burgers;
     }
 
     /**

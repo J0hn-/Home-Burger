@@ -17,3 +17,7 @@ $app->register(new Silex\Provider\TwigServiceProvider(), array(
 $app['dao.burger'] = $app->share(function ($app) {
     return new HomeBurger\DAO\BurgerDAO($app['db']);
 });
+
+$app['dao.category'] = $app->share(function ($app) {
+    return new HomeBurger\DAO\CategoryDAO($app['db']);
+});

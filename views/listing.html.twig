@@ -1,0 +1,19 @@
+{% extends "layout.html.twig" %}
+
+{% block title %}{{ category.name }}{% endblock %}
+
+{% block content %}
+<h2 class="text-center">Catégorie {{ category.name }}</h2>
+    <div class="row">
+    {% for burger in burgers %}
+        <div class="col-md-2 col-sm-3 col-xs-6">
+            <h3>{{ burger.name }}</h2>
+            <a href="/burger/{{ burger.id }}" class="thumbnail">
+                <img src="/images/{{ burger.IMGname }}" title="{{ burger.name }}" />
+            </a>
+        </div>
+    {% else %}
+        <h3 class="text-center">Aucun burger dans cette catégorie :(</h3>
+    {% endfor %}
+</div>
+{% endblock %}

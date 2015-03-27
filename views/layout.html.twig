@@ -26,14 +26,9 @@
                 <li class="dropdown">
                   <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Catégories <b class="caret"></b></a>
                   <ul class="dropdown-menu">
-                    <li><a href="/cat/1">Classique</a></li>
-                    <li><a href="/cat/2">Epicé</a></li>
-                    <li><a href="/cat/3">Végétarien</a></li>
-                    <li><a href="/cat/4">Végétalien</a></li>
-                    <li><a href="/cat/5">Boeuf</a></li>
-                    <li><a href="/cat/6">Poulet</a></li>
-                    <li><a href="/cat/7">Poisson</a></li>
-                    <li><a href="/cat/8">Exotique</a></li>
+                    {% for category in categories %}
+                    <li><a href="/cat/{{ category.id }}">{{ category.name }}</a></li>
+                    {% endfor %}
                   </ul>
                 </li>
               </ul>
@@ -66,7 +61,9 @@
             </div>
         </div><!-- /.container -->
     </nav>
+
     <div id="content">{% block content %}{% endblock %}</div>
+
     <footer class="footer">
         <a href="https://www.google.fr/#q=homeburger">HomeBurger</a> is a fucking great idea ! Oh yeah !
     </footer>
