@@ -1,6 +1,6 @@
 <?php
 
-namespace HomeBuger\Domain;
+namespace HomeBurger\Domain;
 
 use Symfony\Component\Security\Core\User\UserInterface;
 
