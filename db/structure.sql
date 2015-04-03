@@ -44,7 +44,12 @@ create table t_brg_ing (
 
 create table t_usr (
   usr_id integer not null primary key auto_increment,
-  usr_name varchar(50) not null,
+  usr_mail varchar(50) not null unique,
+  usr_lastname varchar(50) not null,
+  usr_firstname varchar(50) not null,
+  usr_address varchar(300) not null,
+  usr_postalcode int(5) not null,
+  usr_town varchar(50) not null,
   usr_password varchar(88) not null,
   usr_salt varchar(23) not null,
   usr_role varchar(50) not null

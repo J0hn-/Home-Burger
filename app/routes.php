@@ -1,6 +1,8 @@
 <?php
 
 use Symfony\Component\HttpFoundation\Request;
+use HomeBurger\Domain\User;
+use HomeBurger\Form\Type\UserType;
 
 // Home page
 $app->get('/', function () use ($app) {
@@ -30,10 +32,27 @@ $app->get('/burger/{id}', function ($id) use ($app) {
 });
 
 // Login form
-$app->get('/login', function(Request $request) use ($app) {
+$app->match('/login', function(Request $request) use ($app) {
     $categories = $app['dao.category']->findAll();
+    $user = new User();
+    $signupForm = $app['form.factory']->create(new UserType(), $user);
+    $signupForm->handleRequest($request);
+    if ($signupForm->isSubmitted() && $signupForm->isValid()) {
+        $user->setRole("ROLE_USER");
+        $user->setSalt(substr(md5(time()), 0, 23));
+        $plainPassword = $user->getPassword();
+        // find the encoder for the user
+        $encoder = $app['security.encoder_factory']->getEncoder($user);
+        // compute the encoded password
+        $password = $encoder->encodePassword($plainPassword, $user->getSalt());
+        $user->setPassword($password);
+            $app['dao.user']->save($user);
+            //$app['session']->getFlashBag()->add('success', 'Your comment was succesfully added.');
+        }
+        $signupFormView = $signupForm->createView();
     return $app['twig']->render('login.html.twig', array(
         'categories'    => $categories,
+        'signupForm'    => $signupFormView,
         'error'         => $app['security.last_error']($request),
         'last_username' => $app['session']->get('_security.last_username')));
 })->bind('login');  // named route so that path('login') works in Twig templates

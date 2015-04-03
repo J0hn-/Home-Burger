@@ -30,15 +30,15 @@ class UserDAO extends DAO implements UserProviderInterface
     /**
      * {@inheritDoc}
      */
-    public function loadUserByUsername($username)
+    public function loadUserByUsername($email)
     {
-        $sql = "select * from t_usr where usr_name=?";
-        $row = $this->getDb()->fetchAssoc($sql, array($username));
+        $sql = "select * from t_usr where usr_mail=?";
+        $row = $this->getDb()->fetchAssoc($sql, array($email));
 
         if ($row)
             return $this->buildDomainObject($row);
         else
-            throw new UsernameNotFoundException(sprintf('User "%s" not found.', $username));
+            throw new UsernameNotFoundException(sprintf('User identified by "%s" not found.', $email));
     }
 
     /**
@@ -70,10 +70,56 @@ class UserDAO extends DAO implements UserProviderInterface
     protected function buildDomainObject($row) {
         $user = new User();
         $user->setId($row['usr_id']);
-        $user->setUsername($row['usr_name']);
+        $user->setMail($row['usr_mail']);
+        $user->setLastname($row['usr_lastname']);
+        $user->setFirstname($row['usr_firstname']);
+        $user->setAddress($row['usr_address']);
+        $user->setPostalcode($row['usr_postalcode']);
+        $user->setTown($row['usr_town']);
         $user->setPassword($row['usr_password']);
         $user->setSalt($row['usr_salt']);
         $user->setRole($row['usr_role']);
         return $user;
+    }
+
+    /**
+     * Saves a comment into the database.
+     *
+     * @param \MicroCMS\Domain\Comment $comment The comment to save
+     */
+    public function save(User $user) {
+        $userData = array(
+            'usr_id' => $user->getId(),
+            'usr_mail' => $user->getMail(),
+            'usr_lastname' => $user->getLastname(),
+            'usr_firstname' => $user->getFirstname(),
+            'usr_address' => $user->getAddress(),
+            'usr_postalcode' => $user->getPostalcode(),
+            'usr_town' => $user->getTown(),
+            'usr_password' => $user->getPassword(),
+            'usr_salt' => $user->getSalt(),
+            'usr_role' => $user->getRole()
+            );
+
+            $this->getDb()->insert('t_usr', $userData);
+
+            /*
+
+            $sql = "select * from t_usr where usr_mail=?";
+            $row = $this->getDb()->fetchAssoc($sql, array($user->getMail()));
+
+        if ($user->getId()) {
+            // The comment has already been saved : update it
+            $this->getDb()->update('t_comment', $userData, array('com_id' => $user->getId()));
+        } else {
+            // The comment has never been saved : insert it
+            $this->getDb()->insert('t_comment', $userData);
+            // Get the id of the newly created comment and set it on the entity.
+            $id = $this->getDb()->lastInsertId();
+            $user->setId($id);
+
+
+        }
+        */
     }
 }

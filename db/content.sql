@@ -21,7 +21,7 @@ insert into t_cat values
 insert into t_brg values
 (1, 'Cheeseburger', "L'incontournable cheeseburger !","img1.jpg",1,9.99);
 insert into t_brg values
-(2, 'Hamburger', "Rien de plus standart !","img1.jpg",1,9.99);
+(2, 'Hamburger', "Rien de plus standard !","img1.jpg",1,9.99);
 insert into t_brg values
 (3, 'Eggburger', "Pour vous les végétariens !","img1.jpg",3,9.99);
 insert into t_brg values
@@ -68,13 +68,14 @@ insert into t_brg_ing values (7, 2);
 insert into t_brg_ing values (7, 6);
 
 
+
 /* raw password is 'john' */
 insert into t_usr values
-(1, 'JohnDoe', 'L2nNR5hIcinaJkKR+j4baYaZjcHS0c3WX2gjYF6Tmgl1Bs+C9Qbr+69X8eQwXDvw0vp73PrcSeT0bGEW5+T2hA==', 'YcM=A$nsYzkyeDVjEUa7W9K', 'ROLE_USER');
-/* raw password is 'jane' */
+(1, 'john@doe', 'doe', 'john', 'somewhere over the', '12345', 'rainbow', 'L2nNR5hIcinaJkKR+j4baYaZjcHS0c3WX2gjYF6Tmgl1Bs+C9Qbr+69X8eQwXDvw0vp73PrcSeT0bGEW5+T2hA==', 'YcM=A$nsYzkyeDVjEUa7W9K', 'ROLE_USER');
+/* raw password is 'jane' */ /*
 insert into t_usr values
 (2, 'JaneDoe', 'EfakNLxyhHy2hVJlxDmVNl1pmgjUZl99gtQ+V3mxSeD8IjeZJ8abnFIpw9QNahwAlEaXBiQUBLXKWRzOmSr8HQ==', 'dhMTBkzwDKxnD;4KNs,4ENy', 'ROLE_USER');
-/* raw password is '@dm1n' */
+/* raw password is '@dm1n' */ /*
 insert into t_usr values
 (3, 'admin', 'gqeuP4YJ8hU3ZqGwGikB6+rcZBqefVy+7hTLQkOD+jwVkp4fkS7/gr1rAQfn9VUKWc7bvOD7OsXrQQN5KGHbfg==', 'EDDsl&fBCJB|a5XUtAlnQN8', 'ROLE_ADMIN');
 
