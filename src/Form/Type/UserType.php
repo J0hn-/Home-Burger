@@ -16,7 +16,6 @@ class UserType extends AbstractType
               ->add('postalcode', 'integer')
               ->add('town', 'text')
               ->add('password', 'password');
-      
     }
 
     public function getName()
