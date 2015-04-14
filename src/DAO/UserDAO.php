@@ -101,8 +101,14 @@ class UserDAO extends DAO implements UserProviderInterface
             'usr_role' => $user->getRole()
             );
 
-            //$this->getDb()->insert('t_usr', $userData);
+        //$this->getDb()->insert('t_usr', $userData);
 
+        $sql = "select * from t_usr where usr_mail=?";
+        $row = $this->getDb()->fetchAssoc($sql, array($user->getMail()));
+
+        if($row) {
+          // Utilisateur déjà existant !
+        } else {
             if ($user->getId()) {
                 // The user has already been saved : update it
                 $this->getDb()->update('t_usr', $userData, array('usr_id' => $user->getId()));
@@ -113,24 +119,6 @@ class UserDAO extends DAO implements UserProviderInterface
                 $id = $this->getDb()->lastInsertId();
                 $user->setId($id);
             }
-
-            /*
-
-            $sql = "select * from t_usr where usr_mail=?";
-            $row = $this->getDb()->fetchAssoc($sql, array($user->getMail()));
-
-        if ($user->getId()) {
-            // The comment has already been saved : update it
-            $this->getDb()->update('t_comment', $userData, array('com_id' => $user->getId()));
-        } else {
-            // The comment has never been saved : insert it
-            $this->getDb()->insert('t_comment', $userData);
-            // Get the id of the newly created comment and set it on the entity.
-            $id = $this->getDb()->lastInsertId();
-            $user->setId($id);
-
-
         }
-        */
     }
 }
