@@ -56,3 +56,29 @@ $app->match('/login', function(Request $request) use ($app) {
         'error'         => $app['security.last_error']($request),
         'last_username' => $app['session']->get('_security.last_username')));
 })->bind('login');  // named route so that path('login') works in Twig templates
+
+// Update form
+$app->match('/profile', function(Request $request) use ($app) {
+    $categories = $app['dao.category']->findAll();
+    $user = $app['security']->getToken()->getUser();
+    $updateForm = $app['form.factory']->create(new UserType(), $user);
+    $updateForm->handleRequest($request);
+    if ($updateForm->isSubmitted() && $updateForm->isValid()) {
+      $user->setSalt(substr(md5(time()), 0, 23));
+      $plainPassword = $user->getPassword();
+      // find the encoder for the user
+      $encoder = $app['security.encoder_factory']->getEncoder($user);
+      // compute the encoded password
+      $password = $encoder->encodePassword($plainPassword, $user->getSalt());
+      $user->setPassword($password);
+        $app['dao.user']->save($user);
+        //$app['session']->getFlashBag()->add('success', 'Your comment was succesfully added.');
+    }
+    $updateFormView = $updateForm->createView();
+    return $app['twig']->render('profile.html.twig', array(
+        'categories'    => $categories,
+        'user'          => $user,
+        'updateForm'    => $updateFormView,
+        'error'         => $app['security.last_error']($request),
+        'last_username' => $app['session']->get('_security.last_username')));
+})->bind('profile');  // named route so that path('profile') works in Twig templates

@@ -103,15 +103,18 @@ class UserDAO extends DAO implements UserProviderInterface
 
         //$this->getDb()->insert('t_usr', $userData);
 
-        $sql = "select * from t_usr where usr_mail=?";
-        $row = $this->getDb()->fetchAssoc($sql, array($user->getMail()));
 
-        if($row) {
-          // Utilisateur déjà existant !
+        if ($user->getId()) {
+            // The user has already been saved : update it
+            $this->getDb()->update('t_usr', $userData, array('usr_id' => $user->getId()));
         } else {
-            if ($user->getId()) {
-                // The user has already been saved : update it
-                $this->getDb()->update('t_usr', $userData, array('usr_id' => $user->getId()));
+            // The user has never been saved : insert it
+
+            $sql = "select * from t_usr where usr_mail=?";
+            $row = $this->getDb()->fetchAssoc($sql, array($user->getMail()));
+
+            if($row) {
+              // Utilisateur déjà existant !
             } else {
                 // The user has never been saved : insert it
                 $this->getDb()->insert('t_usr', $userData);

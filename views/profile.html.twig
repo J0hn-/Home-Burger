@@ -1,0 +1,120 @@
+{% extends 'layout.html.twig' %}
+
+{% block title %}Modification{% endblock %}
+
+{% block content %}
+<h2 class="text-center">{{ block('title') }}</h2>
+{% if error %}
+<div class="alert alert-danger">
+    <strong>Update failed!</strong> {{ error }}
+</div>
+{% endif %}
+<div class="well">
+    {% if updateForm %}
+      {{ form_start(updateForm, { 'attr': {'class': 'form-horizontal'} }) }}
+          <div class="form-group">
+              {{ form_label(updateForm.lastname, 'Nom', { 'label_attr':  {
+                  'class': 'col-sm-5 control-label required'
+              }}) }}
+              <div class="col-sm-3">
+                  {{ form_errors(updateForm.lastname) }}
+                  {{ form_widget(updateForm.lastname, { 'attr':  {
+                      'required': 'required',
+                      'class': 'form-control',
+                      'value': '{{ user.lastname }}'
+                  }}) }}
+              </div>
+          </div>
+
+          <div class="form-group">
+              {{ form_label(updateForm.firstname, 'Prénom', { 'label_attr':  {
+                  'class': 'col-sm-5 control-label required'
+              }}) }}
+              <div class="col-sm-3">
+                  {{ form_errors(updateForm.firstname) }}
+                  {{ form_widget(updateForm.firstname, { 'attr':  {
+                      'required': 'required',
+                      'class': 'form-control',
+                      'value': '{{ user.firstname }}'
+                  }}) }}
+              </div>
+          </div>
+
+          <div class="form-group">
+              {{ form_label(updateForm.address, 'Adresse', { 'label_attr':  {
+                  'class': 'col-sm-5 control-label required'
+              }}) }}
+              <div class="col-sm-4">
+                  {{ form_errors(updateForm.address) }}
+                  {{ form_widget(updateForm.address, { 'attr':  {
+                      'required': 'required',
+                      'class': 'form-control',
+                      'value': '{{ user.address }}'
+                  }}) }}
+              </div>
+          </div>
+
+          <div class="form-group">
+              {{ form_label(updateForm.postalcode, 'Code postal', { 'label_attr':  {
+                  'class': 'col-sm-5 control-label required'
+              }}) }}
+              <div class="col-sm-2">
+                  {{ form_errors(updateForm.postalcode) }}
+                  {{ form_widget(updateForm.postalcode, { 'attr':  {
+                      'required': 'required',
+                      'class': 'form-control',
+                      'value': '{{ user.postalcode }}'
+                  }}) }}
+              </div>
+          </div>
+
+          <div class="form-group">
+              {{ form_label(updateForm.town, 'Ville', { 'label_attr':  {
+                  'class': 'col-sm-5 control-label required'
+              }}) }}
+              <div class="col-sm-3">
+                  {{ form_errors(updateForm.town) }}
+                  {{ form_widget(updateForm.town, { 'attr':  {
+                      'required': 'required',
+                      'class': 'form-control',
+                      'value': '{{ user.town }}'
+                  }}) }}
+              </div>
+          </div>
+
+          <div class="form-group">
+              {{ form_label(updateForm.mail, 'Courriel', { 'label_attr':  {
+                  'class': 'col-sm-5 control-label required'
+              }}) }}
+              <div class="col-sm-3">
+                  {{ form_errors(updateForm.mail) }}
+                  {{ form_widget(updateForm.mail, { 'attr':  {
+                      'required': 'required',
+                      'class': 'form-control',
+                      'value': '{ user.mail }'
+                  }}) }}
+              </div>
+          </div>
+
+          <div class="form-group">
+              {{ form_label(updateForm.password, 'Mot de passe', { 'label_attr':  {
+                  'class': 'col-sm-5 control-label required'
+              }}) }}
+              <div class="col-sm-3">
+                  {{ form_errors(updateForm.password) }}
+                  {{ form_widget(updateForm.password, { 'attr':  {
+                      'required': 'required',
+                      'class': 'form-control'
+                  }}) }}
+              </div>
+          </div>
+
+          <div class="form-group">
+              <div class="col-sm-offset-5 col-sm-3">
+                  <button type="submit" class="btn btn-default btn-primary"><span class="glyphicon glyphicon-save"></span> Mettre à jour</button>
+              </div>
+          </div>
+      {{ form_end(updateForm) }}
+    {% endif %}
+</div>
+{% endblock %}
