@@ -1,11 +1,8 @@
 body {
     padding-top: 60px;
-}
-
-.footer {
-    border-top: 1px solid #ccc;
-    padding-top: 10px;
-    text-align: center;
+    background-image: url('../images/background.jpg');
+    background-repeat:no-repeat;
+    background-size: cover;
 }
 
 .burgerTitle:hover, .burgerTitle:focus {

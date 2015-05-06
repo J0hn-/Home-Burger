@@ -11,7 +11,7 @@
         <div class="col-md-7 col-sm-5">
             <h2>{{ burger.name }}
                 <br><small>{{ burger.resume }}</small>
-                <br><small><a href="/cat/{{ burger.category }}">Catégorie</a></small>
+                <br><small><a href="/cat/{{ burger.category }}">{{ category.name }}</a></small>
                 <br><small>{{ burger.price }} euros</small>
             </h2>
             {% if is_granted('IS_AUTHENTICATED_FULLY') %}

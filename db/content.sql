@@ -27,12 +27,21 @@ insert into t_brg values
 insert into t_brg values
 (4, 'Vegetoburger', "Pour les plus stricts végétaliens !","img1.jpg",4,9.99);
 insert into t_brg values
-(5, 'Burnburger', "Appelez les pompiers !","img1.jpg",2,9.99);
+(5, 'Burnburger', "Appelez les pompiers !","img7.jpg",2,9.99);
 insert into t_brg values
-(6, 'Chickenburger', "Cot cot cot !","img1.jpg",6,9.99);
+(6, 'Chickenburger', "My Life is Potato","img8.jpg",6,9.99);
 insert into t_brg values
-(7, 'Fishburger', "Magicarp ! Magicarp !","img1.jpg",7,9.99);
-
+(7, 'Fishburger', "Magicarp ! Magicarp !","img9.jpg",7,9.99);
+insert into t_brg values
+(8, 'Le Bleu', "Succombez à sa saveur authentique !","img2.jpg",5,9.99);
+insert into t_brg values
+(9, 'Exotique', "Un mélange audacieux !","img3.jpg",8,9.99);
+insert into t_brg values
+(10, 'Le Bistrot', "Un grand classique !","img4.jpg",1,9.99);
+insert into t_brg values
+(11, 'L\'Olympus Burger', "Triomphez","img5.jpg",5,9.99);
+insert into t_brg values
+(12, 'The Dark Burger', "Join the Dark side, we have burgers !","img6.jpg",2,9.99);
 
 insert into t_ing values (1, 'Cornichons');
 insert into t_ing values (2, 'Salade, Tomates, Oignons');

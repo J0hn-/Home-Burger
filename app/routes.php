@@ -26,8 +26,10 @@ $app->get('/cat/{id}', function ($id) use ($app) {
 $app->get('/burger/{id}', function ($id) use ($app) {
     $categories = $app['dao.category']->findAll();
     $burger = $app['dao.burger']->find($id);
+    $category = $app['dao.category']->find($burger->category);
     return $app['twig']->render('burger.html.twig', array(
       'categories' => $categories,
+      'category' => $category,
       'burger' => $burger));
 });
 
