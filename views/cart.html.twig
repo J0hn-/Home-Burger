@@ -1,0 +1,37 @@
+{% extends "layout.html.twig" %}
+
+{% block title %}Panier{% endblock %}
+
+{% block content %}
+<div class="jumbotron">
+    <h2 class="text-center">Contenu de votre panier</h2>
+    <div class="table-responsive">
+        <table class="table table-hover table-condensed">
+            <thead>
+                <tr>
+                    <th>Titre de l'album</th>
+                    <th>Quantité</th>
+                    <th>Prix unitaire</th>
+                    <th>Total</th>
+                </tr>
+            </thead>
+            {% set total = 0 %}
+            {% for burger in burgers %}
+                <tr>
+                    <td><a href=/burger/{{ burger.id }}>{{ burger.name }}</a></td>
+                    <td>1</td>
+                    <td>{{ burger.price }} €</td>
+                    <td>{{ burger.price }} €</td>
+                    {% set total = total + burger.price %}
+                </tr>
+            {% endfor %}
+            <tr>
+                <td><strong>Total</td>
+                <td></td>
+                <td></td>
+                <td><strong>{{ total }} €</strong></td>
+            </tr>
+        </table>
+    </div>
+</div>
+{% endblock %}

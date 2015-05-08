@@ -13,6 +13,7 @@ drop table if exists t_brg;
 drop table if exists t_brg_cat;
 drop table if exists t_ing;
 drop table if exists t_brg_ing;
+drop table if exists t_cart;
 
 create table t_cat (
   cat_id integer not null primary key,
@@ -53,4 +54,12 @@ create table t_usr (
   usr_password varchar(88) not null,
   usr_salt varchar(23) not null,
   usr_role varchar(50) not null
+) engine=innodb character set utf8 collate utf8_unicode_ci;
+
+create table t_cart (
+  cart_id integer not null primary key auto_increment,
+  usr_id integer not null,
+  brg_id integer not null,
+  constraint fk_brg_id foreign key(brg_id) references t_brg(brg_id),
+  constraint fk_usr_id foreign key(usr_id) references t_usr(usr_id)
 ) engine=innodb character set utf8 collate utf8_unicode_ci;

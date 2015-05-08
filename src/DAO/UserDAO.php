@@ -83,9 +83,9 @@ class UserDAO extends DAO implements UserProviderInterface
     }
 
     /**
-     * Saves a comment into the database.
+     * Saves a user into the database.
      *
-     * @param \MicroCMS\Domain\Comment $comment The comment to save
+     * @param \MicroCMS\Domain\User $user The user to save
      */
     public function save(User $user) {
         $userData = array(
@@ -124,4 +124,24 @@ class UserDAO extends DAO implements UserProviderInterface
             }
         }
     }
+
+    /**
+     * Return a list of burgers from the user's cart.
+     *
+     * @param integer $id
+     *
+     * @return array A list of all burgers.
+     *//*
+    public function getCartSize() {
+        $userID = $this->getId();
+        $sql = "select * from t_cart where usr_id=?";
+        $result = $this->getDb()->fetchAll($sql, array($userID));
+
+        // Convert query result to an array of domain objects
+        $total = 0;
+        foreach ($result as $row) {
+            $total++;
+        }
+        return $total;
+    }*/
 }

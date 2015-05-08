@@ -7,7 +7,9 @@ use HomeBurger\Form\Type\UserType;
 // Home page
 $app->get('/', function () use ($app) {
     $categories = $app['dao.category']->findAll();
-    return $app['twig']->render('index.html.twig', array('categories' => $categories));
+    return $app['twig']->render('index.html.twig', array(
+      'categories' => $categories
+      ));
 });
 
 // Detailed info about a burger
@@ -84,3 +86,17 @@ $app->match('/profile', function(Request $request) use ($app) {
         'error'         => $app['security.last_error']($request),
         'last_username' => $app['session']->get('_security.last_username')));
 })->bind('profile');  // named route so that path('profile') works in Twig templates
+
+// Cart overview
+$app->get('/cart', function () use ($app) {
+    $categories = $app['dao.category']->findAll();
+    $userID = $app['security']->getToken()->getUser()->getId();
+    $burgers = $app['dao.burger']->fromUserCart($userID);
+    return $app['twig']->render('cart.html.twig', array(
+      'categories' => $categories,
+      'burgers' => $burgers));
+});
+
+// Adding burger to cart
+$app->get('/cart/add/{id}', function ($id) use ($app) {
+});
