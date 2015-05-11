@@ -60,6 +60,7 @@ create table t_cart (
   cart_id integer not null primary key auto_increment,
   usr_id integer not null,
   brg_id integer not null,
-  constraint fk_brg_id foreign key(brg_id) references t_brg(brg_id),
-  constraint fk_usr_id foreign key(usr_id) references t_usr(usr_id)
+  quantity integer not null,
+  constraint fk_cart_brg_id foreign key(brg_id) references t_brg(brg_id),
+  constraint fk_cart_usr_id foreign key(usr_id) references t_usr(usr_id)
 ) engine=innodb character set utf8 collate utf8_unicode_ci;

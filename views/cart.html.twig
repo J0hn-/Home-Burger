@@ -16,13 +16,13 @@
                 </tr>
             </thead>
             {% set total = 0 %}
-            {% for burger in burgers %}
+            {% for cart in carts %}
                 <tr>
-                    <td><a href=/burger/{{ burger.id }}>{{ burger.name }}</a></td>
-                    <td>1</td>
-                    <td>{{ burger.price }} €</td>
-                    <td>{{ burger.price }} €</td>
-                    {% set total = total + burger.price %}
+                    <td><a href=/burger/{{ cart.burger.id }}>{{ cart.burger.name }}</a></td>
+                    <td>{{ cart.quantity }}</td>
+                    <td>{{ cart.burger.price }} €</td>
+                    <td>{{ cart.burger.price*cart.quantity }} €</td>
+                    {% set total = total + cart.burger.price*cart.quantity %}
                 </tr>
             {% endfor %}
             <tr>

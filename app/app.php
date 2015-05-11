@@ -42,3 +42,10 @@ $app['dao.category'] = $app->share(function ($app) {
 $app['dao.user'] = $app->share(function ($app) {
     return new HomeBurger\DAO\UserDAO($app['db']);
 });
+
+$app['dao.cart'] = $app->share(function ($app) {
+    $cartDAO = new HomeBurger\DAO\CartDAO($app['db']);
+    $cartDAO->setUserDAO($app['dao.user']);
+    $cartDAO->setBurgerDAO($app['dao.burger']);
+    return $cartDAO;
+});

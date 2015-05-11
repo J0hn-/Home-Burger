@@ -61,28 +61,6 @@ class BurgerDAO extends DAO
         return $burgers;
     }
 
-    /**
-     * Return a list of burgers from the user's cart.
-     *
-     * @param integer $id
-     *
-     * @return array A list of all burgers.
-     */
-    public function fromUserCart($id) {
-        $sql = "select * from t_cart where usr_id=?";
-        $result = $this->getDb()->fetchAll($sql, array($id));
-
-        // Convert query result to an array of domain objects
-        $burgers = array();
-        $id = 0;
-        foreach ($result as $row) {
-            $burgerId = $row['brg_id'];
-            $burgers[$id] = $this->find($burgerId);
-            $id++;
-        }
-        return $burgers;
-    }
-    
 
     /**
      * Creates an Burger object based on a DB row.

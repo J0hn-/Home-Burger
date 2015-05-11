@@ -96,5 +96,5 @@ insert into t_comment values
 (2, "Thank you, I'll try my best.", 1, 2);
 */
 
-insert into t_cart values (1, 1, 10);
-insert into t_cart values (2, 1, 11);
+insert into t_cart values (1, 1, 10, 1);
+insert into t_cart values (2, 1, 11, 2);
