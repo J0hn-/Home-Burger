@@ -2,6 +2,7 @@
 
 use Symfony\Component\HttpFoundation\Request;
 use HomeBurger\Domain\User;
+use HomeBurger\Domain\Cart;
 use HomeBurger\Form\Type\UserType;
 
 // Home page
@@ -127,4 +128,22 @@ $app->get('/cart', function () use ($app) {
 
 // Adding burger to cart
 $app->get('/cart/add/{id}', function ($id) use ($app) {
+    $burger = $app['dao.burger']->find($id);
+    $user = $app['security']->getToken()->getUser();
+    $cart = new Cart();
+    $cart->setUser($user);
+    $cart->setBurger($burger);
+    $cart->setQuantity(1); // ToDo : A modifier
+    $app['dao.cart']->save($cart);
+    $app['session']->getFlashBag()->add('success', 'Your burger was succesfully added.');
+
+    // ToDo : A modifier
+    $categories = $app['dao.category']->findAll();
+    if ($app['security']->isGranted('IS_AUTHENTICATED_FULLY'))
+      $carts = $app['dao.cart']->findAllByUser($user->getId());
+    else
+      $carts = array();
+    return $app['twig']->render('cart.html.twig', array(
+      'categories' => $categories,
+      'carts' => $carts));
 });

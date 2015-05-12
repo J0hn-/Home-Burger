@@ -25,6 +25,30 @@ class CartDAO extends DAO
     }
 
     /**
+     * Saves an new article into the user's cart.
+     *
+     * @param \MicroCMS\Domain\Cart $cart The new entrie to save
+     */
+    public function save(Cart $cart) {
+        $cartData = array(
+            'usr_id' => $cart->getUser()->getId(),
+            'brg_id' => $cart->getBurger()->getId(),
+            'quantity' => $cart->getQuantity()
+            );
+
+        if ($cart->getId()) {
+            // The entry has already been saved : update it
+            $this->getDb()->update('t_cart', $cartData, array('cart_id' => $cart->getId()));
+        } else {
+            // The entry has never been saved : insert it
+            $this->getDb()->insert('t_cart', $cartData);
+            // Get the id of the newly created entry and set it on the entity.
+            $id = $this->getDb()->lastInsertId();
+            $cart->setId($id);
+        }
+    }
+
+    /**
      * Return a list of all article in a cart for a user.
      *
      * @param integer $userId The user id.
