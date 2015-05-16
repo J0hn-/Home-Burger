@@ -137,13 +137,5 @@ $app->get('/cart/add/{id}', function ($id) use ($app) {
     $app['dao.cart']->save($cart);
     $app['session']->getFlashBag()->add('success', 'Your burger was succesfully added.');
 
-    // ToDo : A modifier
-    $categories = $app['dao.category']->findAll();
-    if ($app['security']->isGranted('IS_AUTHENTICATED_FULLY'))
-      $carts = $app['dao.cart']->findAllByUser($user->getId());
-    else
-      $carts = array();
-    return $app['twig']->render('cart.html.twig', array(
-      'categories' => $categories,
-      'carts' => $carts));
+    return $app->redirect('/cart');
 });
