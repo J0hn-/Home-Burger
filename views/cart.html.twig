@@ -22,6 +22,7 @@
                     <td>{{ cart.quantity }}</td>
                     <td>{{ cart.burger.price }} €</td>
                     <td>{{ cart.burger.price*cart.quantity }} €</td>
+                    <td><a href="/cart/remove/{{ cart.id }}"><span class="glyphicon glyphicon-trash"></span></a></td>
                     {% set total = total + cart.burger.price*cart.quantity %}
                 </tr>
             {% endfor %}

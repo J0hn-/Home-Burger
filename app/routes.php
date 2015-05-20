@@ -139,3 +139,11 @@ $app->get('/cart/add/{id}', function ($id) use ($app) {
 
     return $app->redirect('/cart');
 });
+
+// Remove from cart
+$app->get('/cart/remove/{id}', function ($id) use ($app) {
+    $app['dao.cart']->delete($id);
+    $app['session']->getFlashBag()->add('success', 'Your burger was succesfully removed.');
+
+    return $app->redirect('/cart');
+});

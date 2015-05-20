@@ -49,6 +49,33 @@ class CartDAO extends DAO
     }
 
     /**
+     * Removes an entry from the database.
+     *
+     * @param integer $id The cart id.
+     */
+    public function delete($id) {
+        // Delete the entry
+        $this->getDb()->delete('t_cart', array('cart_id' => $id));
+    }
+
+    /**
+     * Returns a entry of the cart matching with the supplied id.
+     *
+     * @param integer $id
+     *
+     * @return \HomeBurger\Domain\Cart|throws an exception if no matching article is found
+     */
+    public function find($id) {
+        $sql = "select * from t_cart where cart_id=?";
+        $row = $this->getDb()->fetchAssoc($sql, array($id));
+
+        if ($row)
+            return $this->buildDomainObject($row);
+        else
+            throw new \Exception("No cart matching id " . $id);
+    }
+
+    /**
      * Return a list of all article in a cart for a user.
      *
      * @param integer $userId The user id.
@@ -87,14 +114,14 @@ class CartDAO extends DAO
         $cart->setQuantity($row['quantity']);
 
         if (array_key_exists('usr_id', $row)) {
-            // Find and set the associated article
+            // Find and set the associated user
             $userId = $row['usr_id'];
             $user = $this->userDAO->find($userId);
             $cart->setUser($user);
         }
 
         if (array_key_exists('brg_id', $row)) {
-            // Find and set the associated article
+            // Find and set the associated burger
             $burgerId = $row['brg_id'];
             $burger = $this->burgerDAO->find($burgerId);
             $cart->setBurger($burger);
