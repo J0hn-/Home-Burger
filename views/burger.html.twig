@@ -15,6 +15,14 @@
                 <br><small>{{ burger.price }} euros</small>
             </h2>
             {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+
+            {{ form_start(cartForm) }}
+                {{ form_label(cartForm.quantity, 'Qté', { 'label_attr':  {
+                        'class': 'col-sm-5 control-label required'
+                    }}) }}
+                    <input type="submit" value="Ajouter au panier"/>
+                {{ form_end(cartForm) }}
+
                 <a href="/cart/add/{{ burger.id }}" class="btn btn-primary" id="">
                     <span class="glyphicon glyphicon-shopping-cart"></span> Ajouter au panier
                 </a>

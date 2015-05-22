@@ -4,6 +4,7 @@ use Symfony\Component\HttpFoundation\Request;
 use HomeBurger\Domain\User;
 use HomeBurger\Domain\Cart;
 use HomeBurger\Form\Type\UserType;
+use HomeBurger\Form\Type\CartType;
 
 // Home page
 $app->get('/', function () use ($app) {
@@ -38,17 +39,23 @@ $app->get('/cat/{id}', function ($id) use ($app) {
 });
 
 // Detailed info about a burger
-$app->get('/burger/{id}', function ($id) use ($app) {
+$app->get('/burger/{id}', function ($id, Request $request) use ($app) {
     $categories = $app['dao.category']->findAll();
     $user = $app['security']->getToken()->getUser();
     if ($app['security']->isGranted('IS_AUTHENTICATED_FULLY'))
       $carts = $app['dao.cart']->findAllByUser($user->getId());
     else
       $carts = array();
+    $cart = new Cart();
+    $cartForm = $app['form.factory']->create(new CartType(), $cart);
+    $cartForm->handleRequest($request);//Marc est con
+    $cartFormView = $cartForm->createView();
+
     $burger = $app['dao.burger']->find($id);
     $category = $app['dao.category']->find($burger->category);
     return $app['twig']->render('burger.html.twig', array(
       'categories' => $categories,
+      'cartForm' => $cartFormView,
       'category' => $category,
       'burger' => $burger,
       'carts' => $carts
