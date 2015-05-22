@@ -22,6 +22,22 @@ a:hover, a:focus {
     margin-bottom: 20px;
 }
 
+.navbar {
+    background-color: #EEE;
+}
+
+.navbar-inverse .navbar-nav > li > a:hover, .navbar-inverse .navbar-brand:hover {
+    color: #999;
+}
+
+.navbar-inverse .navbar-nav > li > a, .navbar-inverse .navbar-brand {
+    color: #666;
+}
+
+.glyphicon .glyphicon-trash {
+    color: #666;
+}
+
 #imgHome, #imgBurger {
     border-radius: 7px;
     border:4px solid white;
