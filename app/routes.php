@@ -130,10 +130,10 @@ $app->get('/cart', function () use ($app) {
 $app->get('/cart/add/{id}', function ($id) use ($app) {
     $burger = $app['dao.burger']->find($id);
     $user = $app['security']->getToken()->getUser();
-    $cart = new Cart();
+    $cart = $app['dao.cart']->findByUserAndBurger($user->getId(),$burger->getID());
     $cart->setUser($user);
     $cart->setBurger($burger);
-    $cart->setQuantity(1); // ToDo : A modifier
+    $cart->setQuantity($cart->getQuantity()+1);
     $app['dao.cart']->save($cart);
     $app['session']->getFlashBag()->add('success', 'Your burger was succesfully added.');
 
@@ -146,4 +146,26 @@ $app->get('/cart/remove/{id}', function ($id) use ($app) {
     $app['session']->getFlashBag()->add('success', 'Your burger was succesfully removed.');
 
     return $app->redirect('/cart');
+});
+
+// Edit quantity from cart
+$app->get('/cart/edit/plus/{id}', function ($id) use ($app) {
+    $cart = $app['dao.cart']->find($id);
+    $cart->setQuantity($cart->getQuantity()+1);
+    $app['dao.cart']->save($cart);
+    $app['session']->getFlashBag()->add('success', 'Quantity was succesfully updated.');
+
+    return $app->redirect('/cart');
+});
+
+// Remove from cart
+$app->get('/cart/edit/minus/{id}', function ($id) use ($app) {
+  $cart = $app['dao.cart']->find($id);
+  if ($cart->getQuantity() == 1)
+      return $app->redirect('/cart/remove/'.$id);
+  $cart->setQuantity($cart->getQuantity()-1);
+  $app['dao.cart']->save($cart);
+  $app['session']->getFlashBag()->add('success', 'Quantity was succesfully updated.');
+
+  return $app->redirect('/cart');
 });

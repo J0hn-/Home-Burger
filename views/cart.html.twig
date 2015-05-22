@@ -19,7 +19,15 @@
             {% for cart in carts %}
                 <tr>
                     <td><a href=/burger/{{ cart.burger.id }}>{{ cart.burger.name }}</a></td>
-                    <td>{{ cart.quantity }}</td>
+                    <td>
+                        <a href="/cart/edit/minus/{{ cart.id }}"><span class="glyphicon glyphicon-minus"></span></a>
+                        <span>
+                        &nbsp;
+                        {{ cart.quantity }}
+                        &nbsp;
+                        </span>
+                        <a href="/cart/edit/plus/{{ cart.id }}"><span class="glyphicon glyphicon-plus"></span></a>
+                    </td>
                     <td>{{ cart.burger.price }} €</td>
                     <td>{{ cart.burger.price*cart.quantity }} €</td>
                     <td><a href="/cart/remove/{{ cart.id }}"><span class="glyphicon glyphicon-trash"></span></a></td>

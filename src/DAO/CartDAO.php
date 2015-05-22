@@ -34,7 +34,7 @@ class CartDAO extends DAO
             'usr_id' => $cart->getUser()->getId(),
             'brg_id' => $cart->getBurger()->getId(),
             'quantity' => $cart->getQuantity()
-            );
+          );
 
         if ($cart->getId()) {
             // The entry has already been saved : update it
@@ -100,6 +100,27 @@ class CartDAO extends DAO
             $carts[$cartId] = $cart;
         }
         return $carts;
+    }
+
+    /**
+     * Returns a entry of the cart matching with the supplied usr_id and brg_id.
+     *
+     * @param integer $usr_id
+     * @param integer $brg_id
+     *
+     * @return \HomeBurger\Domain\Cart
+     */
+    public function findByUserAndBurger($userID,$burgerID) {
+      $sql = "select * from t_cart where usr_id=? and brg_id=?";
+      $row = $this->getDb()->fetchAssoc($sql, array($userID,$burgerID));
+      if ($row)
+          return $this->buildDomainObject($row);
+      else
+      {
+          $cart = new Cart();
+          $cart->setQuantity(0);
+          return $cart;
+      }
     }
 
     /**
