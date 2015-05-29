@@ -39,20 +39,41 @@ $app->get('/cat/{id}', function ($id) use ($app) {
 });
 
 // Detailed info about a burger
-$app->get('/burger/{id}', function ($id, Request $request) use ($app) {
+$app->match('/burger/{id}', function ($id, Request $request) use ($app) {
     $categories = $app['dao.category']->findAll();
     $user = $app['security']->getToken()->getUser();
+    $burger = $app['dao.burger']->find($id);
+    $category = $app['dao.category']->find($burger->category);
     if ($app['security']->isGranted('IS_AUTHENTICATED_FULLY'))
       $carts = $app['dao.cart']->findAllByUser($user->getId());
     else
       $carts = array();
+
     $cart = new Cart();
     $cartForm = $app['form.factory']->create(new CartType(), $cart);
     $cartForm->handleRequest($request);//Marc est con
+
+    if($cartForm->isValid() && $cartForm->isSubmitted())
+    {
+        // On vérifie que la quantité est positive
+        if($cart->getQuantity() < 1) {
+            $app['session']->getFlashBag()->add('success', 'Quantité invalide !');
+            return $app->redirect('/burger/'.$id);
+        }
+        else {
+            $cartBD = $app['dao.cart']->findByUserAndBurger($user->getId(), $burger->getID());
+            $cart->setUser($user);
+            $cart->setId($cartBD->getId());
+            $cart->setBurger($burger);
+            $cart->setQuantity($cartBD->getQuantity() + $cart->getQuantity());
+            $app['dao.cart']->save($cart);
+
+            return $app->redirect('/cart');
+        }
+    }
+
     $cartFormView = $cartForm->createView();
 
-    $burger = $app['dao.burger']->find($id);
-    $category = $app['dao.category']->find($burger->category);
     return $app['twig']->render('burger.html.twig', array(
       'categories' => $categories,
       'cartForm' => $cartFormView,

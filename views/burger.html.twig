@@ -3,6 +3,13 @@
 {% block title %}{{ burger.name }}{% endblock %}
 
 {% block content %}
+
+    {% for flashMessage in app.session.flashbag.get('success') %}
+        <div class="alert alert-danger">
+            {{ flashMessage }}
+        </div>
+    {% endfor %}
+
 <div class="jumbotron">
     <div class="row">
         <div class="col-md-5 col-sm-7">
@@ -16,16 +23,29 @@
             </h2>
             {% if is_granted('IS_AUTHENTICATED_FULLY') %}
 
-            {{ form_start(cartForm) }}
-                {{ form_label(cartForm.quantity, 'Qté', { 'label_attr':  {
-                        'class': 'col-sm-5 control-label required'
-                    }}) }}
-                    <input type="submit" value="Ajouter au panier"/>
+                {{ form_start(cartForm) }}
+
+                    <div class="form-group">
+                        {{ form_label(cartForm.quantity, 'Quantité', { 'label_attr':  {
+                                'class': 'col-md-2 col-sm-2 control-label required'
+                            }})
+                        }}
+                        <div class="col-md-2 col-sm-2">
+                        {{ form_errors(cartForm.quantity) }}
+                        {{ form_widget(cartForm.quantity, { 'attr':  {
+                            'required': 'required',
+                            'class': 'form-control'
+                        }}) }}
+                        </div>
+                    </div>
+					<br/><br/>
+                    <div class="form-group">
+						<div class="col-md-2 col-sm-2">
+							<button type="submit" class="btn btn-default btn-primary"><span class="glyphicon glyphicon-shopping-cart"></span> Ajouter au panier</button>
+						</div>
+					</div>
                 {{ form_end(cartForm) }}
 
-                <a href="/cart/add/{{ burger.id }}" class="btn btn-primary" id="">
-                    <span class="glyphicon glyphicon-shopping-cart"></span> Ajouter au panier
-                </a>
             {% else %}
                 <a href="{{ path('login') }} ">Log in</a> to add burgers to cart.
             {% endif %}
