@@ -54,8 +54,8 @@
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                   <span class="glyphicon glyphicon-user"></span> Bienvenue, {{ app.security.token.user.firstname }} <b class="caret"></b></a>
                     <ul class="dropdown-menu">
-                      <li><a href="{{ path('profile') }}">Profil</a></li>
-                      <li><a href="{{ path('logout') }}">Deconnexion</a></li>
+                      <li><a href="{{ path('profile') }}"><span class="glyphicon glyphicon-cog"></span> Profil</a></li>
+                      <li><a href="{{ path('logout') }}"><span class="glyphicon glyphicon-log-out"></span> Deconnexion</a></li>
                     </ul>
               </li>
               <li>
@@ -68,7 +68,7 @@
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                   <span class="glyphicon glyphicon-user"></span> Non connecté <b class="caret"></b></a>
                     <ul class="dropdown-menu">
-                        <li><a href="{{ path('login') }}">Identification</a></li>
+                        <li><a href="{{ path('login') }}"><span class="glyphicon glyphicon-log-in"></span> Identification</a></li>
                     </ul>
               </li>
               {% endif %}

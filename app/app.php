@@ -7,7 +7,6 @@ use Symfony\Component\Debug\ExceptionHandler;
 ErrorHandler::register();
 ExceptionHandler::register();
 
-// Register service providers.
 $app->register(new Silex\Provider\DoctrineServiceProvider());
 $app->register(new Silex\Provider\TwigServiceProvider(), array(
     'twig.path' => __DIR__.'/../views',
@@ -29,6 +28,22 @@ $app->register(new Silex\Provider\SecurityServiceProvider(), array(
 ));
 $app->register(new Silex\Provider\FormServiceProvider());
 $app->register(new Silex\Provider\TranslationServiceProvider());
+
+// Register error handler
+$app->error(function (\Exception $e, $code) use ($app) {
+    switch ($code) {
+        case 403:
+            $message = 'Access denied.';
+            break;
+        case 404:
+            $message = 'This is not the Burger you are looking for.';
+            break;
+        default:
+            $message = "Something went wrong.";
+    }
+
+    return $app['twig']->render('error.html.twig', array('message' => $message));
+});
 
 // Register services.
 $app['dao.burger'] = $app->share(function ($app) {

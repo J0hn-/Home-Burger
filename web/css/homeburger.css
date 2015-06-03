@@ -43,3 +43,8 @@ a:hover, a:focus {
     border:4px solid white;
     box-shadow: 1px 1px 10px #555;
 }
+
+#errorPanel {
+    padding-top: 30px;
+    padding-bottom: 10px;
+}
