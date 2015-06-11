@@ -41,8 +41,10 @@ $app->error(function (\Exception $e, $code) use ($app) {
         default:
             $message = "Something went wrong.";
     }
-
-    return $app['twig']->render('error.html.twig', array('message' => $message));
+    $categories = $app['dao.category']->findAll();
+    return $app['twig']->render('error.html.twig', array(
+        'message' => $message,
+        'categories' => $categories));
 });
 
 // Register services.
